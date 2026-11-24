@@ -43,15 +43,14 @@ class Program
 
         int CalculateRemainingHealth(int damage)
         {
-            return bossHealth - damage;
-            bossHealth -= damage;
+            return bossHealth -= damage;
         }
 
         void DisplayBossStatus(int health)
         {
             if (health > 0)
             {
-                Console.WriteLine("Le boss est toujours vivant!" + health);
+                Console.WriteLine("Le boss est toujours vivant! " + health);
             }
             else
             {
@@ -61,7 +60,9 @@ class Program
 
         while (bossHealth > 0)
         {
-            DisplayBossStatus(CalculateRemainingHealth(CalculateWeaponDamage(40, 5)));
+            Thread.Sleep(1000);
+            Random rnd = new Random();
+            DisplayBossStatus(CalculateRemainingHealth(CalculateWeaponDamage(rnd.Next(0, 50), 5)));
         }
     }
 }
